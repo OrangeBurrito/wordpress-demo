@@ -1,0 +1,27 @@
+services:
+  nginx:
+    ports: !override
+      - 80:80
+      - 443:443
+    volumes:
+      - certbot-etc:/etc/letsencrypt:ro
+
+  db:
+    ports: !reset []
+
+  adminer:
+    profiles: [tools]
+
+  certbot:
+    depends_on:
+      - nginx
+    image: certbot/certbot
+    container_name: wp-certbot
+    profiles: [tools]
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - wordpress:/var/www/html
+    command: certonly --webroot --webroot-path=/var/www/html --email ${SITE_ADMIN_EMAIL} --agree-tos --no-eff-email --staging -d ${SITE_DOMAIN} -d www.${SITE_DOMAIN} 
+
+volumes:
+  certbot-etc:

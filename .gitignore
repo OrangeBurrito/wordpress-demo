@@ -1,0 +1,8 @@
+.env
+.env.local
+.DS_Store
+
+wp-content/*
+!wp-content/themes/
+wp-content/themes/*
+!wp-content/themes/custom/
