@@ -1,33 +1,44 @@
 # Demo Wordpress Site (Docker)
 
-A portable wordpress site. Uses NGINX and MariaDB.
+A portable wordpress site. Uses NGINX and MariaDB. [Take a look at the demo here](http://wordpress.orangeburrito.com/)
 
 ## Commands
-Run in dev
-`docker compose up -d`
+Running
+```sh
+# Dev
+docker compose up -d
 
-Run in prod
-`docker compose -f compose.yml -f compose.prod.yml up -d`
+## Prod
+docker compose -f compose.yml -f compose.prod.yml up -d
+```
 
-Stop
-`docker compose stop`
+Stopping
+``` sh
+# Stop
+docker compose stop
 
-Remove all
-`docker compose down -v`
+# Remove all containers
+docker compose down -v
+```
 
-After editing `nginx.conf`
-`docker compose restart nginx`
+Editing Config files 
+```sh
+# After editing nginx.conf
+docker compose restart nginx
 
-After editing `php.ini`
-`docker compose restart wordpress`
+# After editing php.ini
+docker compose restart wordpress
+```
 
-## URLs
-WP runs at
-`http://localhost:8080`
+## Development URLs
+```sh
+# Wordpress
+http://localhost:8080
 
-Adminer
-`http://localhost:8081`
-(server `db`, user and password from `SQL_USER` / `SQL_PASSWORD` in `.env`)
+# Adminer
+http://localhost:8081
+```
+(Adminer username and password uses `SQL_USER` / `SQL_PASSWORD` in `.env`)
 
 ## ENV Variables
 
